@@ -1,6 +1,6 @@
-let username = "Jack";
-let hasLoggedIn = true;
+let username: string = "Jack";
+let hasLoggedIn: boolean = true;
 
-hasLoggedIn += "Slayer";
+username += "Slayer";
 
 console.log(hasLoggedIn);
