@@ -35,3 +35,6 @@ function parseCoordinate(arg1: unknown, arg2?: unknown): Coordinate {
   }
   return coord;
 }
+
+console.log(parseCoordinate(10, 20));
+console.log(parseCoordinate({ x: 50, y: 50 }));
