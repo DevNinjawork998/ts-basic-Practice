@@ -10,4 +10,6 @@ function myFilter<T>(items: T[], filterFunc: (v: T) => boolean): T[] {
   return items.reduce((a, v) => (filterFunc(v) ? [...a, v] : a), [] as T[]);
 }
 
-console.log(myFilter([1, 2, 3, 4, , 5, 6, 7, 8, 9], (v) => v as number % 2 === 0));
+console.log(
+  myFilter([1, 2, 3, 4, , 5, 6, 7, 8, 9], (v) => (v as number) % 2 === 0)
+);
