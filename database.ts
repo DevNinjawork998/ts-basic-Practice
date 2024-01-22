@@ -34,3 +34,7 @@ const myPresistentDB = new PersistentMemoryDB();
 myDB.set("foo", "bar");
 console.log(myDB.get("foo"));
 const saved = myPresistentDB.saveToString();
+
+const myDB2 = new PersistentMemoryDB();
+myDB2.restoreFromString(saved);
+console.log(myDB2.get("foo"));
