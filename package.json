@@ -9,5 +9,6 @@
     "typescript": "^5.3.3"
   },
   "repository": "https://github.com/Ravenslayer998/ts-basic-Practice.git",
-  "author": "Jack Ooi <thooi998@gmail.com>"
+  "author": "Jack Ooi <thooi998@gmail.com>",
+  "description": "This is a practice folder for Jack to practise TypeScript Syntax and learning on the implementation for TypeScript."
 }
