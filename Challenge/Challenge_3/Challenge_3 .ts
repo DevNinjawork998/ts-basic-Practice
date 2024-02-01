@@ -47,7 +47,7 @@ class EventProcessor<T extends {}> {
 }
 
 interface EventMap {
-  login: { user?: string; name?: string; hasSession?: boolean };
+  login: { user?: string | unknown; name?: string; hasSession?: boolean };
   logout: { user?: string };
 }
 
@@ -63,6 +63,7 @@ uep.addMap("login", (data) => ({
 }));
 
 uep.handleEvent("login", {
+  user: null,
   name: "jack",
 });
 uep.handleEvent("login", {
