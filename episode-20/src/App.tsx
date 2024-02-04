@@ -25,6 +25,14 @@ type ActionType =
   | { type: "ADD"; text: string }
   | { type: "REMOVE"; id: number };
 
+const Incrementer: React.FunctionComponent<{
+  value: number;
+setValue:React.Dispatch<React.SetStateAction<number>> }> = ({ value, setValue }) => (
+  <button onClick={()=> setValue(value + 1)}>
+    Add - {value}
+  </button>
+)
+
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
 
 const Box: React.FC<Props> = ({ children }) => (
@@ -96,12 +104,15 @@ function App() {
     }
   }, []);
 
+  const [value, setValue] = useState(0);
+
   return (
     <div>
       <Heading title="Introduction" />
       <Box>Hello there</Box>
       <List items={["one", "two", "three"]} onClick={onListClick} />
       <Box>{JSON.stringify(payload)}</Box>
+      <Incrementer value={value} setValue={setValue}/>
       <Heading title="Todos" />
       {todos.map((todo) => (
         <div key={todo.id}>
