@@ -43,7 +43,6 @@ function App() {
     <div>
       <Heading title="Introduction" />
       <Box>Hello there</Box>
-
       <Heading title="Todos" />
       {todos.map((todo) => (
         <div key={todo.id}>
