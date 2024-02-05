@@ -25,13 +25,17 @@ type ActionType =
   | { type: "ADD"; text: string }
   | { type: "REMOVE"; id: number };
 
-const Incrementer: React.FunctionComponent<{
-  value: number;
-setValue:React.Dispatch<React.SetStateAction<number>> }> = ({ value, setValue }) => (
-  <button onClick={()=> setValue(value + 1)}>
-    Add - {value}
-  </button>
-)
+type UseNumberValue = ReturnType<typeof useNumber>[0];
+type UseNumberSetValue = ReturnType<typeof useNumber>[1];
+
+const useNumber = (initialValue: number) => useState<number>(initialValue);
+
+const Incrementer: React.FC<{
+  value: UseNumberValue;
+  setValue: UseNumberSetValue;
+}> = ({ value, setValue }) => (
+  <Button onClick={() => setValue(value + 1)}>Add-{value}</Button>
+);
 
 const Heading = ({ title }: { title: string }) => <h2>{title}</h2>;
 
@@ -58,6 +62,13 @@ const List: React.FunctionComponent<{
     ))}
   </ul>
 );
+
+const Button: React.FC<
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >
+> = ({ children, ...rest }) => <button {...rest}>{children}</button>;
 
 function App() {
   const onListClick = useCallback((item: string) => {
@@ -104,7 +115,7 @@ function App() {
     }
   }, []);
 
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useNumber(0);
 
   return (
     <div>
@@ -129,9 +140,10 @@ function App() {
           </button>
         </div>
       ))}
+      <Incrementer value={value} setValue={setValue}></Incrementer>
       <div>
         <input type="text" ref={newTodoRef} />
-        <button onClick={onAddTodo}>Add Todo</button>
+        <Button onClick={onAddTodo}>Add Todo</Button>
       </div>
     </div>
   );
