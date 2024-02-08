@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import "./App.css";
-import { useTodos } from "./Todos";
+import { useTodos, useAddTodo, useRemoveTodo, TodosProvider } from "./Todos";
 
 interface Props {
   children: React.ReactNode;
@@ -27,9 +27,10 @@ const Button: React.FC<
 > = ({ children, ...rest }) => <button {...rest}>{children}</button>;
 
 function App() {
-  const { todos, addTodo, removeTodo } = useTodos([
-    { id: 0, text: "Hey there", done: false },
-  ]);
+  const todos = useTodos();
+  const addTodo = useAddTodo();
+  const removeTodo = useRemoveTodo();
+
   const newTodoRef = useRef<HTMLInputElement>(null);
 
   const onAddTodo = useCallback(() => {
@@ -58,4 +59,16 @@ function App() {
   );
 }
 
-export default App;
+const AppWrapper = () => {
+  return (
+    <TodosProvider initialTodos={([
+      { id: 0, text: "Hey there useContext", done: false },
+    ])}>
+      <div style={{
+        display: "grid", gridTemplateColumns: "50% 50%",
+      }}><App></App>
+        <App></App>
+      </div>
+    </TodosProvider>)
+}
+export default AppWrapper;
