@@ -13,6 +13,7 @@
   "description": "This is a practice folder for Jack to practise TypeScript Syntax and learning on the implementation for TypeScript.",
   "dependencies": {
     "@types/node-fetch": "^2.6.11",
-    "node-fetch": "^3.3.2"
+    "node-fetch": "^3.3.2",
+    "react-use": "^17.5.0"
   }
 }
