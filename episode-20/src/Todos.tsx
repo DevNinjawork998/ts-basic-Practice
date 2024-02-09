@@ -5,10 +5,6 @@ import React, {
   useContext,
 } from "react";
 
-// interface Props {
-//   children: React.ReactNode;
-// }
-
 type ActionType =
   | { type: "ADD"; text: string }
   | { type: "REMOVE"; id: number };
